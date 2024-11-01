@@ -86,36 +86,37 @@ In addition to the above components, I 3D printed a series of jigs
     - Copy to sd card to load to Ender printer
 
 ### Card Layout
-The following table depicts the card layout for the day-of-week and time-of-day display.
+The following table depicts the card layout for the digits and day-of-week (DOW) and time-of-day (TOD) display.
 - Flap - The visible flap displayed to the user (consists of different cards making up the Top and Bottom of the display)
 
-Flap	Position	Card	Label
-1	Top	1	SUN
-1	Bottom	14	AM
-2	Top	2	SUN
-2	Bottom	1	PM
-3	Top	3	MON
-3	Bottom	2	AM
-4	Top	4	MON
-4	Bottom	3	PM
-5	Top	5	TUE
-5	Bottom	4	AM
-6	Top	6	TUE
-6	Bottom	5	PM
-7	Top	7	WED
-7	Bottom	6	AM
-8	Top	8	WED
-8	Bottom	7	PM
-9	Top	9	THU
-9	Bottom	8	AM
-10	Top	10	THU
-10	Bottom	9	PM
-11	Top	11	FRI
-11	Bottom	10	AM
-12	Top	12	FRI
-12	Bottom	11	PM
-13	Top	13	SAT
-13	Bottom	12	AM
-14	Top	14	SAT
-14	Bottom	13	PM
+| Flap | Position | Card | Digits | DOW/TOD |
+| --- | --- | --- | --- | --- |
+| 1 | Top | 1 | 0 | SUN |
+| 1 | Bottom | 14 | 0 | AM |
+| 2 | Top | 2 | 1 | SUN |
+| 2 | Bottom | 1 | 1 | PM |
+| 3 | Top | 3 | 2 | MON |
+| 3 | Bottom | 2 | 2 | AM |
+| 4 | Top | 4 | 3 | MON |
+| 4 | Bottom | 3 | 3 | PM |
+| 5 | Top | 5 | 4 | TUE |
+| 5 | Bottom | 4 | 4 | AM |
+| 6 | Top | 6 | 5 | TUE |
+| 6 | Bottom | 5 | 5 | PM |
+| 7 | Top | 7 | 6 | WED |
+| 7 | Bottom | 6 | 6 | AM |
+| 8 | Top | 8 | 7 | WED |
+| 8 | Bottom | 7 | 7 | PM |
+| 9 | Top | 9 | 8 | THU |
+| 9 | Bottom | 8 | 8 | AM |
+| 10 | Top | 10 | 9 | THU |
+| 10 | Bottom | 9 | 9 | PM |
+| 11 | Top | 11 |  | FRI |
+| 11 | Bottom | 10 | , | AM |
+| 12 | Top | 12 | : | FRI |
+| 12 | Bottom | 11 | : | PM |
+| 13 | Top | 13 | ! | SAT |
+| 13 | Bottom | 12 | ! | AM |
+| 14 | Top | 14 |  | SAT |
+| 14 | Bottom | 13 |  | PM |
 
