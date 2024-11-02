@@ -42,8 +42,8 @@ Used as an on/off switch
 | --- | --- |
 | Startup | When the clock is turned on, program execution begins. If enabled in configuration, NTP Time Update mode is executed. Display Update mode is then executed. |
 | Config Button Click | A short button press places the clock in Configuration mode. A long button press exits configuration mode. Configuration mode can also be exited in the website |
-| Set Date Time Click | A short button press manually starts the NTP Time Update mode (if configured) and then runs Display Update mode. A long button press cancels this mode. |
-| Set Date Time Timer | Every hour, the clock automatically starts the NTP Time Update mode (if user has enabled this in configuration) |
+| Set Date Time Click | A short button press manually starts the Set Date Time mode. A long button press cancels this mode. |
+| Set Date Time Timer | Every hour, the clock automatically starts the Set Date Time mode. |
 
 ## Modes
 
@@ -54,23 +54,22 @@ The clock is set as an Access Point (AP) allowing users to connect using wi-fi. 
 - View log files for troubleshooting issues
 - Exit configuration mode
 
-### NTP Time Update Mode
-The clock connects to the internet and updates the date and time using the [Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol) (NTP).
-- User must first enable this in Configuration mode and provide home wi-fi access.
-- If enabled, this mode will automatically run every hour.
+### Set Date Time Mode
+If configured, the clock connects to the internet and updates the date and time using the [Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol) (NTP). The clock then runs the Display Update mode.
+- This mode will automatically run every hour.
 - Users can also click a button to run this mode at any time.
 
 ### Display Update Mode
 The clock updates the split-flap displays to show the date and time. This mode executes:
 - Automatically every minute
 - After manually setting the date and time in Configuration mode
-- After an NTP Time Update mode has run
+- The last step of the Set Date Time mode
 
 ## LED Indicator
 
 | Light | Description |
 | --- | --- |
-| Solid On | The clock is in NTP Time Update mode |
+| Solid On | The clock is in Set Date Time mode |
 | Steady Blinking | The clock is in Configuration mode |
 | Four-Pulse Rapid Blinking | An error occurred, view the log for details. The light blinks rapidly four times with a pause and then repeats several times before shutting off |
 
