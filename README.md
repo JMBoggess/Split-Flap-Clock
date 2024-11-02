@@ -7,10 +7,30 @@ In December 2023, I bought my first microcontroller. I first began working on a 
 # Components
 
 ## 14-Flap Split-Flap Display
-The split-flap displays were designed primarily from [Scott Bezek's work](https://github.com/scottbez1/splitflap). The primary alteration is mine is a 14-flap version since I am primarily interested in displaying numbers. I found 14 flaps was a good compromise in reducing the overall dimensions while leaving enough room for certain components (e.g. magnet in the spool section for the Hall sensor). The overall dimensions of each display is:
+The split-flap displays were designed primarily from [Scott Bezek's work](https://github.com/scottbez1/splitflap). My primary alteration is a 14-flap version since I am primarily interested in displaying numbers. I found 14 flaps was a good compromise in reducing the overall dimensions while leaving enough room for certain components (e.g. magnet in the spool section for the Hall sensor). The overall dimensions of each display is:
 - Width: 90mm
 - Height: 133mm
 - Depth: 60mm
+
+## Split-Flap Electronics
+- Shift-bit Register (2) - used with the four digit displays
+- 28BYJ-48 Stepper Motors (5)
+- Driver Boards (5)
+- Hall Monitors (5)
+
+## LED
+Used to indicate program status
+- 1 LED
+- 220 Ohm resistor
+
+## Buttons
+Allows user to interact with the clock
+- 2 buttons
+  - Control Configuration mode
+  - Manually run NTP Time Update mode
+
+## Slide Switch
+Used as an on/off switch
 
 # Source Code
 
@@ -22,7 +42,7 @@ The split-flap displays were designed primarily from [Scott Bezek's work](https:
 | --- | --- |
 | Startup | When the clock is turned on, program execution begins. If enabled in configuration, NTP Time Update mode is executed. Display Update mode is then executed. |
 | Config Button Click | A short button press places the clock in Configuration mode. A long button press exits configuration mode. Configuration mode can also be exited in the website |
-| Set Date Time Click | A short button press manually starts the NTP Time Update mode. A long button press cancels this mode. |
+| Set Date Time Click | A short button press manually starts the NTP Time Update mode (if configured) and then runs Display Update mode. A long button press cancels this mode. |
 | Set Date Time Timer | Every hour, the clock automatically starts the NTP Time Update mode (if user has enabled this in configuration) |
 
 ## Modes
