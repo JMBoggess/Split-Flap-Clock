@@ -38,10 +38,10 @@ class Config:
             with open(self.file, 'r') as f:
                 settings = json.load(f)
             
-            self.ssid = settings['ssid']
-            self.password = settings['password']
+            self.ssid = settings['ssid'] if settings['ssid'] != '' else None
+            self.password = settings['password'] if settings['password'] != '' else None
             self.ntp_enabled = int(settings['ntp_enabled'])
-            self.timezone = settings['timezone']
+            self.timezone = settings['timezone'] if settings['timezone'] != '' else None
         except OSError:
             self.ssid = None
             self.password = None
@@ -53,10 +53,10 @@ class Config:
         Write values to the config file
         """
         settings = {
-            'ssid' : self.ssid,
-            'password' : self.password, 
+            'ssid' : self.ssid if self.ssid != None else '',
+            'password' : self.password if self.password != None else '', 
             'ntp_enabled' : str(self.ntp_enabled), 
-            'timezone' : self.timezone
+            'timezone' : self.timezone if self.timezone != None else ''
         }
         with open(self.file, 'w') as f:
             json.dump(settings,f)

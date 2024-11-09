@@ -1,8 +1,12 @@
 import asyncio
 from button import Button
+from config import Config
+from display import Display
 from jmbtime import JMBTime
 from led import LED
+from log import Log
 from timer import Timer
+from wifi import WIFI
 from wifiap import WIFIAP
 
 ########## Global Methods
@@ -32,6 +36,7 @@ async def timer_display_update():
     """
     Ensures the display is updated every minute
     """
+    global jmbtime
     global task_display_update
     
     while True:
@@ -39,8 +44,9 @@ async def timer_display_update():
         sleep_sec = 60
         if task_display_update == None or task_display_update.done():
             task_display_update = asyncio.create_task(display_update_mode())
-            dt = await task_display_update
-            sleep_sec = 60 - dt[3]
+            await task_display_update
+            dt = jmbtime.get_localtime()
+            sleep_sec = 60 - dt[6]
 
         # Wait for the next minute occurrance
         await asyncio.sleep(sleep_sec)
@@ -146,9 +152,11 @@ async def config_mode():
     """
     Main method for configuration mode
     """
+    global config
+    global jmbtime
     global led
-    # global wifiap
-    # global wifi
+    global wifiap
+    global wifi
 
     # Main code
     try:
@@ -156,7 +164,7 @@ async def config_mode():
         led.blink_constant()
 
         # Disconnect wifi (only disconnects if currently connected)
-        # wifi.disconnect()
+        wifi.disconnect()
 
         # Start the server
         await wifiap.start_server(print_status=True)
@@ -176,26 +184,69 @@ async def config_mode():
         # Turn of the config light
         led.off()
 
+        # Ensure the config object is updated with the latest config data
+        config.read()
+
+        # Ensure JMBTime has the correct Timezone offsets
+        jmbtime.load_timezone_offset(config.timezone)
+
+
 async def setdt_mode():
     """
-    
+    Updates the Real Time Clock (RTC) using the Network Time Protocol (NTP), if enabled, and then updates the display time
     """
+    global jmbtime
+    global led
     global task_display_update
+    global wifi
+
+    # Turn on the led
+    led.on()
+
+    # Is NPT mode enabled?
+    if config.ntp_enabled == 1:
+        # Start the log
+        log = Log()
+        log.write('Start the Set Date Time process', 'w')
+
+        try:
+            # Wifi Connection
+            if not wifi.wlan.isconnected():
+                # Attempt to connect
+                if await wifi.connect(log) == "Failure":
+                    # Error has been written to log, give the error blink code to the user, and exit
+                    led.blink_error()
+                    return
+
+            # Set the Date Time
+            await jmbtime.set_rtc_ntp()
+
+        except asyncio.CancelledError:
+            # Task was canceled
+            log.write("User canceled Set Date Time process")
+            led.blink_error()
+            raise # Raise the error up
 
     # Update the display (if not already running)
     if task_display_update == None or task_display_update.done():
         task_display_update = asyncio.create_task(display_update_mode())
         await task_display_update
+    
+    # Turn off the led to indicate the mode is finished
+    led.off()
 
 async def display_update_mode():
     """
     Updates the display with the date and time as set in the Real Time Clock (RTC)
-
-    return (tuple) - (weekday (1-7), hour (1-12), min (0-59), sec (0-59), meridiem (AM/PM))
     """
-    print('Run: Display Update Mode')
-    return (1,1,0,0,'AM')
+    global display
+    global jmbtime
 
+    # Get the datetime tuple (year, month (1-12), day (1-31), weekday (0-6:Sun-Sat), hour (1-12), min (0-59), sec (0-59), meridiem (AM/PM))
+    dt = jmbtime.get_localtime()
+
+    # Update the display
+    display.display_datetime(dt)
 
 
 ########## Main Method
@@ -203,6 +254,7 @@ async def main():
     """
     Main program loop
     """
+    global task_setdt
     global timer_setdt
 
     # Waiters and Timers
@@ -213,8 +265,9 @@ async def main():
     asyncio.create_task(waiter_btn_setdt_click())
     asyncio.create_task(waiter_btn_setdt_cancel_click())
 
-    # Set the Date Time using NTP if configured
-    # TODO: if config, run NTP Time Update mode
+    # Set the Date Time
+    task_setdt = asyncio.create_task(setdt_mode())
+    await task_setdt
 
     # Start the Set Date and Time Timer
     timer_setdt.start()
@@ -235,15 +288,15 @@ event_btn_setdt_cancel_click = asyncio.Event()
 event_config_exit = asyncio.Event() # Used in wifi app to indicate when user clicks Exit
 
 # Objects
-# display = Display([11,12,13],[21,20,26,27])
+config = Config()
+display = Display([11,12,13],[21,20,26,27])
 timer_setdt = Timer(event_timer_setdt, 3600, 60) # One hour timer (3,600 seconds) wait 1 min (60 sec) between timer checks
 btn_config = Button(18, event_btn_config_click, event_btn_config_cancel_click)
 btn_setdt = Button(19, event_btn_setdt_click, event_btn_setdt_cancel_click)
-jmbtime = JMBTime()
+jmbtime = JMBTime(config.timezone)
 led = LED(16)
 wifiap = WIFIAP(event_config_exit)
-# wifi = WIFI()
-# instagram = Instagram()
+wifi = WIFI()
 
 # Tasks
 task_config = None

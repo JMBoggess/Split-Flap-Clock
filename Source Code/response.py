@@ -1,5 +1,6 @@
 import network
 from config import Config
+from jmbtime import JMBTime
 # from log import Log
 
 class Response:
@@ -92,7 +93,7 @@ class Response:
         # Retrieve current config settings
         config = Config()
 
-        # HTML to display
+        # HTML heading
         html = """<h2>Settings</h2>
             <form method="post" action="/settings/configure">
             <p>Available Networks</p>
@@ -122,11 +123,27 @@ class Response:
         if config.ntp_enabled == None or config.ntp_enabled == 1:
             html += 'checked '
         
-        html += '/><label for="ntp">Enable automatic date time setting using my wifi information</label></p>'
+        html += '/><label for="ntp">Enable automatic date time setting using my wifi information</label></p><p><select name="timezone">'
 
-        
+        timezones = [
+            ['[Select One]', None], 
+            ['Eastern Standard/Daylight Time (EST/EDT)','EST EDT'],
+            ['Central Standard/Daylight Time (CST/CDT)','CST CDT'],
+            ['Mountain Standard/Daylight Time (MST/MDT)','MST MDT'], 
+            ['Mountain Standard Time (MST)','MST'],
+            ['Pacific Standard/Daylight Time (PST/PDT)','PST PDT'],
+            ['Alaska Standard/Daylight Time (AKST/AKDT)','AKST AKDT'],
+            ['Hawaii Standard/Daylight Time (HST/HDT)','HST HDT'],
+            ['Hawaii Standard Time (HST)','HST']
+        ]
 
-        html += '<p><input type="submit" value="Submit" /></p></form><br /><p><a href="/">Return to Home Page</a></p>'
+        for [k, v] in timezones:
+            if v == config.timezone:
+                html += f'<option value="{v}" selected>{k}</option>'
+            else:
+                html += f'<option value="{v}">{k}</option>'
+
+        html += '</select></p><p><input type="submit" value="Submit" /></p></form><br /><p><a href="/">Return to Home Page</a></p>'
 
         return html
 
@@ -135,15 +152,16 @@ class Response:
         Settings form to manually set date and time
         """
 
+        # Retrieve the current date time according to the Real Time Clock (RTC)
+        jmbtime = JMBTime()
+        dt = jmbtime.get_localtime()
+        hr = dt[4] if dt[7] == 'AM' else dt[4]+12
+
         # HTML to display
-        html = """<h2>Manually Set Date Time</h2>
+        html = f"""<h2>Manually Set Date Time</h2>
             <form method="post" action="/settime/configure">
             <p>Current Date and Time</p>
-            <p><input type="datetime-local" name="dt" required></p>
-            <p>Time Zone</p>
-            <p><select name="tz" required>
-                <option value="" selected></option>
-            </select></p>
+            <p><input type="datetime-local" name="dt" value="{dt[0]}-{dt[1]:02}-{dt[2]:02}T{hr:02}:{dt[5]:02}" required></p>
             <p><input type="submit" value="Submit"></p>
             </form>
             <br />
@@ -170,24 +188,29 @@ class Response:
         Accepts user-provided configuration values and sets the configuration file. If an error, user is notified.
 
         kv (dict) - dictionary of key-value pairs from the form the user completed
-        """
+        """ 
 
-        # Ensure all expected fields were provided
-        if 'ssid' not in kv or 'pass' not in kv:
-            html = """<h1>Configuration Error</h1>
-                <p>Error: missing expected values from configuration form. Please use below link to return to the form and try again.</p>
-                <p><a href="/">Configuration Home</a></p><br />
-            """
-            return html
+        # Obtain values
+        ssid = kv.get('ssid',None)
+        pw = kv.get('pass',None)
+        if pw == '':
+            pw = None
+        ntp = 1 if 'ntp' in kv else 0
+        timezone = kv.get('timezone',None)
+        if timezone == '' or timezone == 'None':
+            timezone = None
+        else: 
+            timezone = timezone.replace('+',' ')
 
         # Update the configuration file
         config = Config()
-        config.ssid = kv['ssid']
-        config.password = kv['pass']
-        config.ntp_enable = 1 if 'ntp' in kv else 0
+        config.ssid = ssid
+        config.password = pw
+        config.ntp_enabled = ntp
+        config.timezone = timezone
         config.write()
 
-        # # Notify user of success
+        # Notify user of success
         html = """<h2>Configuration Success</h2>
             <p>Configuration file updated successfully.</p>
             <p><a href="/">Home Page</a></p><br />
@@ -202,13 +225,23 @@ class Response:
         kv (dict) - dictionary of key-value pairs from the form the user completed
         """
 
-        html = "<p>User values</p>"
-        for k, v in kv.items():
-            html += f'<p>{k}: {v}</p>'
-        html += '<p><a href="/">Home Page</a></p><br />'
+        # Convert the date time string into a tuple to set the Real Time Clock (RTC)
+        dt = kv['dt']
+        y = int(dt[:4])
+        m = int(dt[5:7])
+        d = int(dt[8:10])
+        h = int(dt[11:13])
+        n = int(dt[-2:])
 
-        # html = """<h2>Set Date Time Success</h2>
-        #     <p>Date Time updated successfully.</p>
-        #     <p><a href="/">Home Page</a></p>
-        # """
+        # Set the Real Time Clock (RTC)
+        jmbtime = JMBTime()
+        jmbtime.set_rtc(y, m, d, h, n)
+
+        # TODO: Move the display
+        
+        # Indicate success
+        html = """<h2>Set Date Time Success</h2>
+            <p>Date Time updated successfully.</p>
+            <p><a href="/">Home Page</a></p>
+        """
         return html
