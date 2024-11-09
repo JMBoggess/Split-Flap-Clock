@@ -34,8 +34,6 @@ Used as an on/off switch
 
 # Source Code
 
-## Program Flow Overview
-
 ## Events
 
 | Event | Description |
@@ -72,6 +70,9 @@ The clock updates the split-flap displays to show the date and time. This mode e
 | Solid On | The clock is in Set Date Time mode |
 | Steady Blinking | The clock is in Configuration mode |
 | Four-Pulse Rapid Blinking | An error occurred, view the log for details. The light blinks rapidly four times with a pause and then repeats several times before shutting off |
+
+## Note about Chat GPT
+I did not use Chat GPT or any other generative AI (GenAI) to produce any of the code. While I am not opposed to the use of GenAI as a programer, I believe it should be used as a supplemental reference and not in place of learning how to program.
 
 # Notes
 - TODO: Determine how to make the program start on power-up
