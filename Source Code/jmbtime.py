@@ -1,5 +1,6 @@
 # Class for working with time
 import asyncio
+from log import Log
 from machine import RTC
 import ntptime
 
@@ -82,6 +83,9 @@ class JMBTime:
 
         return (bool) - indicates success (True)
         """
+        # Setup the log
+        log = Log()
+
         # Set number of attempts
         i = 10 # Number of attempts
         time_set_success = False
@@ -119,10 +123,10 @@ class JMBTime:
 
             # Set new hour
             h = dt_utc[4] + hours_offset
-            if h >= 24:
-                # Advance one day
-                dt += 1
-                h -= 24
+            if h < 0:
+                # Subtract one day
+                dt -= 1
+                h += 24
             
             # Obtain new year, month, day
             y, m, d = self._date_from_ordinal(dt)
@@ -137,8 +141,18 @@ class JMBTime:
             # Obtain Min, Sec, Subsec (waited until this point to keep time as precise as possible)
             dt_now = rtc.datetime()
 
+            # Log settings
+            log.write('RTC time set by NTP, updated to timezone, following is DateTime:')
+            log.write(f'Year={y}, Month={m}, Day={d}, Weekday={wd}, Hour={h}, Min={dt_now[5]}, Sec={dt_now[6]}, Subsec={dt_now[7]}')
+
             # Set datetime
-            rtc.datetime((y, m, d, wd, h, dt_now[5], dt_now[6], dt_now[7]))
+            try:
+                rtc.datetime((y, m, d, wd, h, dt_now[5], dt_now[6], dt_now[7]))
+            except OSError:
+                # Raise the error (will be logged in main)
+                raise
+
+
 
         return time_set_success
 

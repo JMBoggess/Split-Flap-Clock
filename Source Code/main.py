@@ -226,6 +226,11 @@ async def setdt_mode():
             log.write("User canceled Set Date Time process")
             led.blink_error()
             raise # Raise the error up
+            
+        except OSError as err:
+            # Unknown error
+            log.write(f'{err=}')
+            raise
 
     # Update the display (if not already running)
     if task_display_update == None or task_display_update.done():
