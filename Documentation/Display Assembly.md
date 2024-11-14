@@ -66,6 +66,32 @@ The following provides information on how to assemble a split-flap display.
 
 ## Spool Box Assembly
 
-### Determine Magnet Side
+### Install Magnet
+Prior to inserting the magnet into the spool (right-side), you must first determine which pole of the magnet is read by the Hall Sensor. For the Hall Sensors I purchased, the sensor head was bent the opposite direction from where it needed to be in the final assembly. As a result, I had to first bend the sensor head away from the pins (where the cables attach). Connect the Hall Sensor to the Pico W and run a script to continuously read. Hold the magnet near the sensor and determine which side results in a positive read (reverse the magnet as needed). Use a marker to place a dot on the side that needs to be read from to ensure proper assembly into the spool.
+
+Pin configuration:
+- Minus (-) - ground
+- Plus (+) - SysBus (5v) assuming powered by USB
+- Serial In (S) - any GPIO port (use Pin.PULL_UP)
+
+Example script:
+```python
+from machine import Pin
+from time import sleep
+
+p = Pin(0, Pin.IN, Pin.PULL_UP)
+
+while True:
+    try:
+        print(p.value())
+        sleep(1)
+    except KeyboardInterrupt:
+        break
+```
+
+Once the correct side is determined, place the magnet in the spool hole with the side you marked facing out. The indent for the nut is the outside of the spool and the same side the hall sensor will be reading the magnet. In some cases, I found I had to use some CA glue to keep the magnet in the spool hole. The below image shows the correct side facing out/up which will be read by the hall sensor.
+![Spool with magnet](/Media/assembly_spool_magnet.jpg)
+
+###
 
 
