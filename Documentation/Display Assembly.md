@@ -115,12 +115,16 @@ The "spool box" is four support pieces. I am referring to this as the spool box 
 
 ### Flap-Spool Assembly
 This is the most difficult part of assembly. Place one of the Hold jigs on a work surface. Place the left spool (non-magnet spool) inside the jig. Place the flaps into the left-spool holes using the jig to support the flaps and help keep them aligned. Be sure to start with the desired flap (flap 0) in the holes located opposite the magnet (marked previously during spool lineup). The spool will rotate counter-clockwise from the current viewing position. Flaps should be placed in sequence so they will display in order as the spool turns this direction.
+![Flap Lower](/Media/assembly_flap_lower.jpg)
 
 Once the flaps are inserted securly in the left-spool (on bottom), place another Hold jig on the top to help line up the flaps with the right-spool (on top). Ensure the flaps are in each hole otherwise they will bend when pressing the spools together.
+![Flap Full](/Media/assembly_flap_full.jpg)
 
 Press the right-spool (on top) down to lock the flaps and spool box in place. I worked this in quarter sections, lining up flaps on one side and pressing that side together, turning, and repeating the process back and forth until the spool locked down into place. In the below photo, notice the flap ends are visible through the holes indicating they are in place and not bent inside the spool assembly. You can carefully turn over the assembly with the jigs in place to inspect both ends as needed.
+![Flap Close Up](/Media/assembly_flap_closeup.jpg)
 
 Once all flaps are in place and the spools are pressed down so the spool box support pieces are flush, remove the jigs. Ensure the spool box suppor pieces are not extending beyond the spool (i.e. overtighten) otherwise the flaps will not rotate freely. Use the hex wrench to then tighten the axel-holder screw (insert the hex wrench through the hole of the opposite spool).
+![Flap Final](/Media/assembly_flap_final.jpg)
 
 ## Outer Box Assembly
 
