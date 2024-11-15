@@ -36,9 +36,13 @@ The following provides information on how to assemble a split-flap display.
 
 ### Hardware
 - Hex Drive Button Socket Cap Screws
-  - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: )
+  - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 6)
   - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 1)
     - Axel-holder-spindle assembly
+- Phillips Head Machine Screws
+  - [M2 x ](https://a.co/d/1rp4N2g) (qty: 2)
+- [M4 Nuts](https://a.co/d/0MgO0n8) (qty: 8)
+- [M2 Nuts](https://a.co/d/1rp4N2g) (qty: 2)
 
 ### Electronics
 - [Hall Effect Sensor](https://a.co/d/9E8ezPd) (3144E A3144)
