@@ -38,9 +38,8 @@ The following provides information on how to assemble a split-flap display.
 - Hex Drive Button Socket Cap Screws
   - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 6)
   - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 1)
-    - Axel-holder-spindle assembly
 - Phillips Head Machine Screws
-  - [M2 x ](https://a.co/d/1rp4N2g) (qty: 2)
+  - [M2 x 6mm](https://a.co/d/1rp4N2g) (qty: 2)
 - [M4 Nuts](https://a.co/d/0MgO0n8) (qty: 8)
 - [M2 Nuts](https://a.co/d/1rp4N2g) (qty: 2)
 
@@ -56,6 +55,7 @@ The following provides information on how to assemble a split-flap display.
 - Files
   - Used to file 3D printed parts as needed
 - Allen wrench
+- Small phillips screw driver
 
 ## Split-Flap Cards
 - Place a card under the "Split" jig so that the lip of the jig is on the outside of the card
@@ -129,7 +129,8 @@ Once all flaps are in place and the spools are pressed down so the spool box sup
 ## Outer Box Assembly
 
 ### Hall Sensor
-Install the Hall Sensor on the right side piece. The back of the Hall Sensor board faces the outside of the finished assembled box. Note the slot in the right side piece for the flap-stop screw, this is at the bottom of the finished box. The Hall Sensor should be bent around the plastic so that it will be near the magnet when the spool assembly is added.
+Install the Hall Sensor on the right side piece using M2 x 6mm screws and nuts. The back of the Hall Sensor board faces the outside of the finished assembled box. Note the slot in the right side piece for the flap-stop screw, this is at the bottom of the finished box. The Hall Sensor should be bent around the plastic so that it will be near the magnet when the spool assembly is added. The below depicts the installed hall sensor on the inside (left image) and outside (right image).
+![Hall Sensor](/Media/assembly_hall_sensor.jpg)
 
 
 
