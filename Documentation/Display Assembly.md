@@ -92,6 +92,8 @@ while True:
 Once the correct side is determined, place the magnet in the spool hole with the side you marked facing out. The indent for the nut is the outside of the spool and the same side the hall sensor will be reading the magnet. In some cases, I found I had to use some CA glue to keep the magnet in the spool hole. The below image shows the correct side facing out/up which will be read by the hall sensor.
 ![Spool with magnet](/Media/assembly_spool_magnet.jpg)
 
-###
+### Assembly Spool Lineup
+Identify where the holes lineup between the left and right spool. In the below image, on the left, the slots lineup but the holes do not. In the right image, both the slots and holes line up. Place a mark on the spools to identify holes that align. I placed a dot on the holes opposite the magnet as these are the holes for split-flap card zero - the first split-flap card index to be displayed.
+![Spool Hole Lineup](/Media/assembly_spool_lineup.jpg)
 
 
