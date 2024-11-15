@@ -35,7 +35,14 @@ The following provides information on how to assemble a split-flap display.
 ![Split-Flap Card Parts](/Media/assembly_flap_parts.jpg)
 
 ### Hardware
-- 
+- Hex Drive Button Socket Cap Screws
+  - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 6)
+  - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 1)
+    - Axel-holder-spindle assembly
+- Phillips Head Machine Screws
+  - [M2 x ](https://a.co/d/1rp4N2g) (qty: 2)
+- [M4 Nuts](https://a.co/d/0MgO0n8) (qty: 8)
+- [M2 Nuts](https://a.co/d/1rp4N2g) (qty: 2)
 
 ### Electronics
 - [Hall Effect Sensor](https://a.co/d/9E8ezPd) (3144E A3144)
@@ -92,8 +99,34 @@ while True:
 Once the correct side is determined, place the magnet in the spool hole with the side you marked facing out. The indent for the nut is the outside of the spool and the same side the hall sensor will be reading the magnet. In some cases, I found I had to use some CA glue to keep the magnet in the spool hole. The below image shows the correct side facing out/up which will be read by the hall sensor.
 ![Spool with magnet](/Media/assembly_spool_magnet.jpg)
 
-### Assembly Spool Lineup
+### Spool Lineup
 Identify where the holes lineup between the left and right spool. In the below image, on the left, the slots lineup but the holes do not. In the right image, both the slots and holes line up. Place a mark on the spools to identify holes that align. I placed a dot on the holes opposite the magnet as these are the holes for split-flap card zero - the first split-flap card index to be displayed.
 ![Spool Hole Lineup](/Media/assembly_spool_lineup.jpg)
+
+### Axel-Holder
+Using an M4 x 16mm screw and nut, attach the axel-holder to the right-spool. The head of the screw will be on the inside (side opposite the inset space for the hex net). Leave the assembly loose to rotate the axel-holder into final position. The screw will be tightened after installing the flaps and spool box components.
+![Axel Holder](/Media/assembly_axel_holder.jpg)
+
+### Spool Box
+Attach all four supports for the spool box to the left spool (non-magnet spool). Push these flush with the outside/bottom of the spool. Push the four supports onto the axel-holder and slightly into the right spool. I loosened the axel-holder screw significantly to push the axel holder as far down into the box as possible. The more space provided to install the flaps the better while simultaneously starting to insert the four supports is optimal. The most difficult part of this assembly is lining up the flaps with the holes while simultaneously pushing the spools onto the spool box supports.
+
+The "spool box" is four support pieces. I am referring to this as the spool box as the original design this is drawn from the four components form an actual box to which the spools sit on either end. In reducing the size of the display, I found it necessary to not make these components meet into a true box. For lack of better term, I am still referring to this as the "spool box".
+![Spool Box](/Media/assembly_spool_box.jpg)
+
+### Flap-Spool Assembly
+This is the most difficult part of assembly. Place one of the Hold jigs on a work surface. Place the left spool (non-magnet spool) inside the jig. Place the flaps into the left-spool holes using the jig to support the flaps and help keep them aligned. Be sure to start with the desired flap (flap 0) in the holes located opposite the magnet (marked previously during spool lineup). The spool will rotate counter-clockwise from the current viewing position. Flaps should be placed in sequence so they will display in order as the spool turns this direction.
+
+Once the flaps are inserted securly in the left-spool (on bottom), place another Hold jig on the top to help line up the flaps with the right-spool (on top). Ensure the flaps are in each hole otherwise they will bend when pressing the spools together.
+
+Press the right-spool (on top) down to lock the flaps and spool box in place. I worked this in quarter sections, lining up flaps on one side and pressing that side together, turning, and repeating the process back and forth until the spool locked down into place. In the below photo, notice the flap ends are visible through the holes indicating they are in place and not bent inside the spool assembly. You can carefully turn over the assembly with the jigs in place to inspect both ends as needed.
+
+Once all flaps are in place and the spools are pressed down so the spool box support pieces are flush, remove the jigs. Ensure the spool box suppor pieces are not extending beyond the spool (i.e. overtighten) otherwise the flaps will not rotate freely. Use the hex wrench to then tighten the axel-holder screw (insert the hex wrench through the hole of the opposite spool).
+
+## Outer Box Assembly
+
+### Hall Sensor
+Install the Hall Sensor on the right side piece. The back of the Hall Sensor board faces the outside of the finished assembled box. Note the slot in the right side piece for the flap-stop screw, this is at the bottom of the finished box. The Hall Sensor should be bent around the plastic so that it will be near the magnet when the spool assembly is added.
+
+
 
 
