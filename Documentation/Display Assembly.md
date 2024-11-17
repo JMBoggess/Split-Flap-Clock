@@ -36,7 +36,8 @@ The following provides information on how to assemble a split-flap display.
 
 ### Hardware
 - Hex Drive Button Socket Cap Screws
-  - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 6)
+  - [M4 x 8mm](https://a.co/d/axGSh9M) (qty: 2)
+  - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 4)
   - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 1)
 - Phillips Head Machine Screws
   - [M2 x 6mm](https://a.co/d/1rp4N2g) (qty: 2)
@@ -132,6 +133,20 @@ Once all flaps are in place and the spools are pressed down so the spool box sup
 Install the Hall Sensor on the right side piece using M2 x 6mm screws and nuts. The back of the Hall Sensor board faces the outside of the finished assembled box. Note the slot in the right side piece for the flap-stop screw, this is at the bottom of the finished box. The Hall Sensor should be bent around the plastic so that it will be near the magnet when the spool assembly is added. The below depicts the installed hall sensor on the inside (left image) and outside (right image).
 ![Hall Sensor](/Media/assembly_hall_sensor.jpg)
 
+### Step Motor
+Install the Step Motor on the left side piece using M4 x 8mm screws and nuts. The hole for the Step Motor is in the center of the left side and so it is reversible. The body of the motor is on the outside of the box. Place the heads of the screws on the inside with the nuts on the outside of the box (next to the body of the motor).
+![Step Motor](/Media/assembly_step_motor.jpg)
+
+### Top and Base Preparation
+Push four nuts into the Top and Base components. There are slots for the nuts. The flat part of the nuts should be perpendicular to the thickness of the plates. If necessary, use files to widen the slots for easier assembly. I also used the shaft of the allen wrench in the nut hole to push against and alternatively used a scrap plastic piece to push on top of the nuts.
+![Step Motor](/Media/assembly_top_base_nuts.jpg)
+
+### Top, Base, Sides, Flap-Spool
+Assembly the Top and Base to the left and right Side pieces using M4 x 10mm screws and nuts. The top has two vertical tabs which the face plate will be attached to. These tabs should face the front of the box. The base has two horizontal tabs facing the back of the box. The base is a completely flat piece.
+- Push nuts into the top and base plates
+- Push the assembled flap spool onto the step motor on the left piece
+  - Leave a gap between the side panel and the flap spool so it can rotate freely avoiding the screw heads
+- 
 
 
 
