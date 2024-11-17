@@ -38,10 +38,12 @@ The following provides information on how to assemble a split-flap display.
 - Hex Drive Button Socket Cap Screws
   - [M4 x 8mm](https://a.co/d/axGSh9M) (qty: 2)
   - [M4 x 10mm](https://a.co/d/h3HqGNw) (qty: 4)
-  - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 1)
+    - Optionally: 2 additional for face plate
+  - [M4 x 16mm](https://a.co/d/axGSh9M) (qty: 2)
 - Phillips Head Machine Screws
   - [M2 x 6mm](https://a.co/d/1rp4N2g) (qty: 2)
 - [M4 Nuts](https://a.co/d/0MgO0n8) (qty: 8)
+  - Optionally: 2 additional for face plate (permenant assembly option)
 - [M2 Nuts](https://a.co/d/1rp4N2g) (qty: 2)
 
 ### Electronics
@@ -141,12 +143,27 @@ Install the Step Motor on the left side piece using M4 x 8mm screws and nuts. Th
 Push four nuts into the Top and Base components. There are slots for the nuts. The flat part of the nuts should be perpendicular to the thickness of the plates. If necessary, use files to widen the slots for easier assembly. I also used the shaft of the allen wrench in the nut hole to push against and alternatively used a scrap plastic piece to push on top of the nuts.
 ![Step Motor](/Media/assembly_top_base_nuts.jpg)
 
-### Top, Base, Sides, Flap-Spool
-Assembly the Top and Base to the left and right Side pieces using M4 x 10mm screws and nuts. The top has two vertical tabs which the face plate will be attached to. These tabs should face the front of the box. The base has two horizontal tabs facing the back of the box. The base is a completely flat piece.
-- Push nuts into the top and base plates
-- Push the assembled flap spool onto the step motor on the left piece
-  - Leave a gap between the side panel and the flap spool so it can rotate freely avoiding the screw heads
-- 
+### Left Side and Flap-Spool
+Push the assemblyed Flap-Spool assembly onto the step motor of the left side. Leave a gap between the side panel and the flap spool so it can rotate freely avoiding the screw heads.
+![Step Motor and Flap-Spool](/Media/assembly_motor_flap_spool.jpg)
 
+### Top, Base, and Left Side
+Attach the Top and Base to the left side using four M4 x 10 screws. The vertical tabs on the Top should be facing the front of the assembled box. The horizontal tabs of the base should be facing the back of the assembled box. It may be necessary to use a file on the tabs of the Top and Base. The image below is shown from the front.
+![Left Side with Top and Base](/Media/assembly_left_side.jpg)
+
+### Right Side
+Attach the right side to the Top and base with the screw on the spool protruding through the side.
+
+### Flap Stop Screw
+Insert an M4 x 16mm screw through the flap stop slot on the right side panel. Attach with a nut. I found placing this screw at the front of the slot performed the best. It can be adjusted during testing of the display.
+![Flap Stop Screw](/Media/assembly_flap_stop.jpg)
+
+### Face Plate
+Attach the face plate using two M4 screws. This is intended for testing purposes as the final box will have a wood trim to act as the face plate. If desired, this face plate can be used for final production in which case secure the screws with nuts.
+
+## Final Display
+The final display is now ready for testing.
+
+![Final Assembly](/Media/assembly_final.jpg)
 
 
