@@ -18,15 +18,35 @@ The following is a functional diagram of how I connected the electronic componen
 - I used Draw.io to create the diagram
 - My goal was to make a diagram legible to the layperson (me) as a guide
 
+![Wiring Diagram](/Media/Diagram.png)
+
 ## Observations
 
 ### Power
 For testing purposes, the Pico W is connected to the computer through a USB cable. All Vcc components are indications of what is connected to the power rail (GND indicates the Ground Rail).
 - I will need to determine how to properly power the final product
+- HC595 shift registers can also be powered by 3.3V
 
 ### GPIO (General Purpose Input/Outuput)
 All pins used on the Pico W are GPIO. I color-coded the pins to make it easier to identify what is plugged in and how many pins will be used on the Pico W.
 - I used 8-bit shift registers daisy-chained together to reduce the number of pins used
 - There are a total of 11 pins that will be used by the final product
 
-![Wiring Diagram](/Media/Diagram.png)
+## Shift Registers
+There are a total of three 8-bit shift registers used. Each display requires four bits so two displays can be driven from one register. The last register has only one display so the remaining four bits are not used. Pin configuration involves:
+| Pin(s) | Connection |
+| --- | --- |
+| QA, QB, QC, QD | One step-motor driver board |
+| QE, QF, QG, QH | Another step-motor driver board |
+| GND (Ground) | Ground rail |
+| OE (output enabled) | Ground rail, i.e. register output is always enabled |
+| VCC | SysBus 5 volts |
+| SRCLR (shift register clear) | Sysbus 5 volts, i.e. register is immediately cleared each time |
+| SRCLK "clock" (shift register clock) | GPIO pin - all shift registers use the same pin |
+| RCLK "latch" (storage register clock) | GPIO pin - all shift registers use the same pin |
+| SER (serial input) | First shift register is connected to GPIO pin, subsequent go from this pin to the GH' pin of the parent register |
+| QH' | Used in daisy chain, last register will not use this pin, recieves the SER connection from a child register |
+
+## Hall Effect Sensors
+Each display uses a Hall Effect Sensor to read a magnet connected to the split-flap wheel indicating which flap is the "home" position. Each are connected to a separate GPIO pin on the Pico W. In code, Pin.PULL_UP is used to eliminate the need for a resistor.
+
