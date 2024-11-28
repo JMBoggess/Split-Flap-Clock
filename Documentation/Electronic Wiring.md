@@ -50,3 +50,6 @@ There are a total of three 8-bit shift registers used. Each display requires fou
 ## Hall Effect Sensors
 Each display uses a Hall Effect Sensor to read a magnet connected to the split-flap wheel indicating which flap is the "home" position. Each are connected to a separate GPIO pin on the Pico W. In code, Pin.PULL_UP is used to eliminate the need for a resistor.
 
+# Wiring Test
+I used the above to test all wiring and code using a breadboard. I was able to successfully run the code as expected and set the time.
+![Wiring Test](/Media/wiring_test.jpg)
