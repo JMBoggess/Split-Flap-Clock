@@ -1,6 +1,7 @@
 # Used to display the desired date time
 # Do not use asyncio to sleep for stepper motor
 #   Requires microseconds, it doesn't appear this is recommended or possible with asyncio sleep/sleep_ms
+# Flap Count Modify - this tag in code indicates a line of code that can be modified when testing fewer then 5 displays
 from machine import Pin
 from time import sleep_us
 
@@ -71,8 +72,8 @@ class Display:
         self.flap_values_dow = ['0-AM','0-PM','1-AM','1-PM','2-AM','2-PM','3-AM','3-PM','4-AM','4-PM','5-AM','5-PM','6-AM','6-PM']
 
         # Number of split-flap displays
-        self.display_count = 4 # TODO: change to 5
-        self.shift_register_count = 2 # TODO: change to 3
+        self.display_count = 5 # Flap Count Modify
+        self.shift_register_count = 3 # Flap Count Modify
 
         # Flap Value Current - the current index of the character displayed (If unknown or not set: None)
         self.flap_value_current = [None] * self.display_count
@@ -101,8 +102,8 @@ class Display:
         flap_1 = self.flap_values_digit.index(h[1:])
         flap_2 = self.flap_values_digit.index(m[:1])
         flap_3 = self.flap_values_digit.index(m[1:])
-        # flap_4 = self.flap_values_dow.index(f'{dt[3]}-{dt[7]}') # TODO: uncomment
-        self.flap_value_target = [flap_0,flap_1,flap_2,flap_3] # TODO: add back: ,flap_4]
+        flap_4 = self.flap_values_dow.index(f'{dt[3]}-{dt[7]}') # Flap Count Modify
+        self.flap_value_target = [flap_0,flap_1,flap_2,flap_3,flap_4] # Flap Count Modify
 
         # Initialize sequence index (0-3)
         seq_index = 0
@@ -116,7 +117,7 @@ class Display:
 
         # Determine steps to turn each display to reach the desired value
         steps_remaining = [self._calculate_steps(i) for i in range(self.display_count)]
-        # steps_remaining.append(0) # TODO: uncomment (keep following comment) Account for no 6th display
+        steps_remaining.append(0) # Flap Count Modify: adds a dummy step for no 6th display
 
         # Start attempts
         while sum(map(abs, steps_remaining)) > 0 and max_attempts > 0:
@@ -161,6 +162,7 @@ class Display:
             
             # Determine remaining steps needed to reach final values
             steps_remaining = [self._calculate_steps(i) for i in range(self.display_count)]
+            steps_remaining.append(0) # Flap Count Modify: adds a dummy step for no 6th display
 
             # Decrement max attempts
             max_attempts -= 1

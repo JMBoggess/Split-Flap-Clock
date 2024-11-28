@@ -252,6 +252,7 @@ async def display_update_mode():
 
     # Update the display
     display.display_datetime(dt)
+    # print(dt) # Debug line
 
 
 ########## Main Method
@@ -262,17 +263,17 @@ async def main():
     global task_setdt
     global timer_setdt
 
+    # Set the Date Time
+    task_setdt = asyncio.create_task(setdt_mode())
+    await task_setdt
+
     # Waiters and Timers
-    asyncio.create_task(timer_display_update())
+    asyncio.create_task(timer_display_update()) # This will update the display immediately again, however, the previous code should have already set the correcte date/time
     asyncio.create_task(waiter_timer_setdt())
     asyncio.create_task(waiter_btn_config_click())
     asyncio.create_task(waiter_btn_config_cancel_click())
     asyncio.create_task(waiter_btn_setdt_click())
     asyncio.create_task(waiter_btn_setdt_cancel_click())
-
-    # Set the Date Time
-    task_setdt = asyncio.create_task(setdt_mode())
-    await task_setdt
 
     # Start the Set Date and Time Timer
     timer_setdt.start()
@@ -294,7 +295,7 @@ event_config_exit = asyncio.Event() # Used in wifi app to indicate when user cli
 
 # Objects
 config = Config()
-display = Display([11,12,13],[21,20,26,27])
+display = Display([15,14,13],[1,2,3,4,5])
 timer_setdt = Timer(event_timer_setdt, 3600, 60) # One hour timer (3,600 seconds) wait 1 min (60 sec) between timer checks
 btn_config = Button(18, event_btn_config_click, event_btn_config_cancel_click)
 btn_setdt = Button(19, event_btn_setdt_click, event_btn_setdt_cancel_click)
